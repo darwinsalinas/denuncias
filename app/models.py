@@ -94,7 +94,7 @@ class PresuntoAutor(models.Model):
     cabello = models.TextField()
     tatuajes = models.TextField()
     cicatrices = models.TextField()
-    denuncia = models.ForeignKey(Denuncia, on_delete=models.CASCADE)
+    denuncia = models.ForeignKey(Denuncia, on_delete=models.CASCADE, related_name='autores')
 
     def __str__(self):
         return self.nombre
@@ -106,7 +106,7 @@ class Victima(models.Model):
     identificacion = models.CharField(max_length=30)
     sexo = models.ForeignKey(Sexo, on_delete=models.CASCADE)
     edad = models.IntegerField()
-    denuncia = models.ForeignKey(Denuncia, on_delete=models.CASCADE)
+    denuncia = models.ForeignKey(Denuncia, on_delete=models.CASCADE, related_name='victimas')
 
     def __str__(self):
         return self.nombre
@@ -118,7 +118,7 @@ class Testigo(models.Model):
     identificacion = models.CharField(max_length=30)
     sexo = models.ForeignKey(Sexo, on_delete=models.CASCADE)
     edad = models.IntegerField()
-    denuncia = models.ForeignKey(Denuncia, on_delete=models.CASCADE)
+    denuncia = models.ForeignKey(Denuncia, on_delete=models.CASCADE, related_name='testigos')
 
     def __str__(self):
         return self.nombre

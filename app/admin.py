@@ -47,7 +47,7 @@ class DenunciaAdmin(admin.ModelAdmin):
         ObjetoAfectadoInline,
     ]
 
-    list_filter = ('fecha_hora', 'estado', 'localidad', 'tipo_delito', 'victima_set__sexo')
+    list_filter = ('fecha_hora', 'estado', 'localidad', 'tipo_delito', 'victimas__sexo', 'testigos__nombre', 'autores__nombre')
 
 
 admin.site.register([
