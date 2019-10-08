@@ -52,7 +52,7 @@ class DenunciaAdmin(admin.ModelAdmin):
         'estado',
         'localidad',
         'localidad__municipio',
-        'localidad__distrito_no',
+        'localidad__distrito',
         'tipo_delito',
         'tipo_lugar',
     )

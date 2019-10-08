@@ -75,7 +75,7 @@ class Municipio(models.Model):
 class Localidad(models.Model):
     nombre = models.CharField(max_length=50)
     municipio = models.ForeignKey(Municipio, on_delete=models.CASCADE)
-    distrito_no = models.IntegerField()
+    distrito = models.ForeignKey(Distrito, on_delete=models.CASCADE)
 
     def __str__(self):
         return self.nombre
