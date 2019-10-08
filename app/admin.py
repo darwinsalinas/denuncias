@@ -10,7 +10,7 @@ admin.site.site_title = "SDPN"
 admin.site.index_title = "Bienvenido a SDPN"
 
 
-class PresuntoAutorInline(admin.TabularInline):
+class PresuntoAutorInline(admin.StackedInline):
     model = PresuntoAutor
     extra = 1
 
@@ -47,8 +47,20 @@ class DenunciaAdmin(admin.ModelAdmin):
         ObjetoAfectadoInline,
     ]
 
-    list_filter = ('fecha_hora', 'estado', 'localidad', 'tipo_delito', 'victimas__sexo', 'testigos__nombre', 'autores__nombre')
-
+    list_filter = (
+        'fecha_hora',
+        'estado',
+        'localidad',
+        'localidad__municipio',
+        'localidad__distrito_no',
+        'tipo_delito',
+        'tipo_lugar',
+    )
+    search_fields = (
+        'victimas__nombre',
+        'testigos__nombre',
+        'autores__nombre'
+    )
 
 admin.site.register([
     Distrito, 

@@ -6,6 +6,9 @@ class Distrito(models.Model):
 
     def __str__(self):
         return self.nombre
+    
+    class Meta:
+        verbose_name_plural = 'Distritos'
 
 
 class EstadoDenuncia(models.Model):
@@ -13,6 +16,9 @@ class EstadoDenuncia(models.Model):
 
     def __str__(self):
         return self.nombre
+    
+    class Meta:
+        verbose_name_plural = 'Estados Denuncias'
 
 
 class TipoLugar(models.Model):
@@ -21,12 +27,18 @@ class TipoLugar(models.Model):
     def __str__(self):
         return self.nombre
 
+    class Meta:
+        verbose_name_plural = 'Tipos de lugares'
+
 
 class TipoDelito(models.Model):
     nombre = models.CharField(max_length=35)
 
     def __str__(self):
         return self.nombre
+
+    class Meta:
+        verbose_name_plural = 'Tipos de delitos'
 
 
 class Sexo(models.Model):
@@ -41,6 +53,9 @@ class ColorPiel(models.Model):
 
     def __str__(self):
         return self.nombre
+
+    class Meta:
+        verbose_name_plural = 'Colores de piel'
 
 
 class Contextura(models.Model):
@@ -65,6 +80,9 @@ class Localidad(models.Model):
     def __str__(self):
         return self.nombre
 
+    class Meta:
+        verbose_name_plural = 'Localidades'
+
 
 
 class Denuncia(models.Model):
@@ -78,6 +96,7 @@ class Denuncia(models.Model):
     agresores_desconocidos = models.IntegerField()
     localidad = models.ForeignKey(Localidad, on_delete=models.CASCADE)
     tipo_delito = models.ForeignKey(TipoDelito, on_delete=models.CASCADE)
+    tipo_lugar = models.ForeignKey(TipoLugar, on_delete=models.CASCADE)
 
     def __str__(self):
         return "{} - {} ".format(self.identificacion, self.fecha_hora)
@@ -99,6 +118,9 @@ class PresuntoAutor(models.Model):
     def __str__(self):
         return self.nombre
 
+    class Meta:
+        verbose_name_plural = 'Presuntos Autores'
+
 
 
 class Victima(models.Model):
@@ -110,6 +132,9 @@ class Victima(models.Model):
 
     def __str__(self):
         return self.nombre
+
+    class Meta:
+        verbose_name_plural = 'Victimas'
     
 
 
@@ -133,6 +158,9 @@ class ObjetoUtilizado(models.Model):
     def __str__(self):
         return self.nombre
 
+    class Meta:
+        verbose_name_plural = 'Objetos Utilizados'
+
 
 
 class ObjetoAfectado(models.Model):
@@ -142,3 +170,6 @@ class ObjetoAfectado(models.Model):
 
     def __str__(self):
         return self.nombre
+
+    class Meta:
+        verbose_name_plural = 'Objetos Afectados'
